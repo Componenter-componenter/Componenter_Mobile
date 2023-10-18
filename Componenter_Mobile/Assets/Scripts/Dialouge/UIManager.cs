@@ -67,7 +67,7 @@ public class UIManager : MonoBehaviour, IPointerClickHandler
     }
     public void fornewGame()
     {
-        SceneManager.LoadScene("Prologue");
+        SceneControlManager.Instance.LoadSceneAsync("Prologue");
         if (DialogueManager.Instance != null)
         {
             DialogueManager.Instance.StartDialogue(forprologue.defaultDialoge, "Prologue");

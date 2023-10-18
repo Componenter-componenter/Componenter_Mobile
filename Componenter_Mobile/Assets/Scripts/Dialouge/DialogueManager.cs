@@ -80,28 +80,30 @@ public class DialogueManager : MonoBehaviour
 
     public void EndDialogue()
     {
-        
         if (!string.IsNullOrEmpty(targetSceneName) && targetSceneName == "MainMenu" && !PlayerPrefs.HasKey("IsPlayOpening"))
         {
             dialougeAnimator.SetBool("Shake", false);
             UIManager.Instance.fordialoguePanel();
             UIManager.Instance.FlashScreen();
             Debug.Log("FlashScreen");
-            SceneManager.LoadScene("Main");
+            SceneControlManager.Instance.LoadSceneAsync("Main");
         }
         else if (!string.IsNullOrEmpty(targetSceneName) && targetSceneName == "MainMenu" && PlayerPrefs.HasKey("IsPlayOpening"))
         {
-            SceneManager.LoadScene("Main");
+
+            SceneControlManager.Instance.LoadSceneAsync("Main");
         }
         else if (!string.IsNullOrEmpty(targetSceneName) && targetSceneName == "Tutorial" && !PlayerPrefs.HasKey("IsPlayPrologue"))
         {
+
             UIManager.Instance.fordialoguePanel();
-            SceneManager.LoadScene("Tutorial");
+            UIManager.Instance.FlashScreen();
+            SceneControlManager.Instance.LoadSceneAsync("Tutorial");
 
         }
         else if (!string.IsNullOrEmpty(targetSceneName) && targetSceneName == "Tutorial" && PlayerPrefs.HasKey("IsPlayPrologue"))
         {
-            SceneManager.LoadScene("Tutorial");
+            SceneControlManager.Instance.LoadSceneAsync("Tutorial");
         }
     }
    
