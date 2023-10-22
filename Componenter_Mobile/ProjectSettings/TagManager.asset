@@ -10,6 +10,7 @@ TagManager:
   - PlayerAttack
   - MonsterAttack
   - Stage
+  - DeadLine
   layers:
   - Default
   - TransparentFX

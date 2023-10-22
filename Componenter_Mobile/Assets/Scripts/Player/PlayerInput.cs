@@ -67,6 +67,25 @@ public class PlayerInput : InputScript
                 }
             }
         }
+
+        if (collision.tag == "DeadLine")
+        {
+            if (health > 0)
+            {
+                Debug.Log("Start DeadLoop");
+                health = 0;
+                GetComponent<AttackScript>().CancelInvoke("EndAttack");
+                if (health == 0)
+                {
+                    Debug.Log("DeadLine");
+                    if (UIManager.Instance)
+                        UIManager.Instance.RetryPanel.SetActive(true);
+                    GetComponent<Animator>().SetTrigger("isDead");
+                    GetComponent<Animator>().SetBool("isDeading", true);
+                    Dead();
+                }
+            }
+        }
     }
     void Dead()
     {
