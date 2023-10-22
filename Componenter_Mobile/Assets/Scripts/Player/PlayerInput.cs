@@ -14,6 +14,13 @@ public class PlayerInput : InputScript
 
     private string moveAxisName = "Horizontal";
 
+    public Vector2 StartPosition;
+
+    private void Awake()
+    {
+        StartPosition = transform.position;
+    }
+
     public void Update()
     {
         hitcul -= Time.deltaTime;
@@ -54,8 +61,8 @@ public class PlayerInput : InputScript
                 if (health <= 0)
                 {
                     Debug.Log("Dead");
-                    if(UIManager.Instance)
-                        UIManager.Instance.RetryPanel.SetActive(true);
+                    //if (UIManager.Instance)
+                    //    UIManager.Instance.RetryPanel.SetActive(true);
                     GetComponent<Animator>().SetTrigger("isDead");
                     GetComponent<Animator>().SetBool("isDeading", true);
                     Dead();
@@ -78,8 +85,8 @@ public class PlayerInput : InputScript
                 if (health == 0)
                 {
                     Debug.Log("DeadLine");
-                    if (UIManager.Instance)
-                        UIManager.Instance.RetryPanel.SetActive(true);
+                    //if (UIManager.Instance)
+                    //    UIManager.Instance.RetryPanel.SetActive(true);
                     GetComponent<Animator>().SetTrigger("isDead");
                     GetComponent<Animator>().SetBool("isDeading", true);
                     Dead();
@@ -93,6 +100,17 @@ public class PlayerInput : InputScript
         move = 0;
         jump = false;
         attack = false;
+        Invoke("Revive",1f);
+    }
+
+    void Revive()
+    {
+        health = 1;
+        CancelInvoke();
+        GetComponent<Animator>().SetBool("isDeading", false);
+        GetComponent<Animator>().SetTrigger("isRevive");
+        canMove = true;
+        transform.position = StartPosition;
     }
 
     public void JumpButton()

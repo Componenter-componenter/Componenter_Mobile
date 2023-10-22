@@ -26,10 +26,13 @@ public class ComponentDrag : MonoBehaviour, IEndDragHandler, IDragHandler, IBegi
         canvasGroup.alpha = 0.6f;
         canvasGroup.blocksRaycasts = false;
 
-        if (ComponentType == "Move") componentmanager.MoveComponent -= 1;
-        if (ComponentType == "Jump") componentmanager.JumpCompoent -= 1;
-        if (ComponentType == "Attack") { componentmanager.AttackComponent = ""; }
-        componentmanager.UIUpdate();
+        if (componentmanager)
+        {
+            if (ComponentType == "Move") componentmanager.MoveComponent -= 1;
+            if (ComponentType == "Jump") componentmanager.JumpCompoent -= 1;
+            if (ComponentType == "Attack") { componentmanager.AttackComponent = ""; }
+            componentmanager.UIUpdate();
+        }
 
         GameObject[] ComponentManagers = GameObject.FindGameObjectsWithTag("ComponentManager");//모든 컴포넌트 매니저 활성화
         for (int i = 0; i < ComponentManagers.Length; i++)
@@ -44,7 +47,8 @@ public class ComponentDrag : MonoBehaviour, IEndDragHandler, IDragHandler, IBegi
             }
             ComponentManagers[i].GetComponent<Image>().enabled = true;
         }
-        componentmanager.GetComponent<Image>().enabled = false; //이 컴포넌트의 컴포넌트 매니저만 비활성화
+        if (componentmanager)
+            componentmanager.GetComponent<Image>().enabled = false; //이 컴포넌트의 컴포넌트 매니저만 비활성화
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -58,7 +62,7 @@ public class ComponentDrag : MonoBehaviour, IEndDragHandler, IDragHandler, IBegi
         canvasGroup.alpha = 1f;
         canvasGroup.blocksRaycasts = true;
 
-        if (!isEnd)
+        if (!isEnd && componentmanager)
         {
             if (ComponentType == "Move") componentmanager.MoveComponent += 1;
             if (ComponentType == "Jump") componentmanager.JumpCompoent += 1;
@@ -69,8 +73,10 @@ public class ComponentDrag : MonoBehaviour, IEndDragHandler, IDragHandler, IBegi
         GameObject[] ComponentManagers = GameObject.FindGameObjectsWithTag("ComponentManager");//모든 컴포넌트 매니저 비활성화
         for (int i = 0; i < ComponentManagers.Length; i++)
             ComponentManagers[i].GetComponent<Image>().enabled = false;
-
-        Destroy(gameObject, 0f);
+        if (componentmanager)
+            Destroy(gameObject, 0f);
+        if(isEnd)
+            Destroy(gameObject, 0f);
     }
 
 }
