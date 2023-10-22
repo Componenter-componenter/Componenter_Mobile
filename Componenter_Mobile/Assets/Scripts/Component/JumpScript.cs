@@ -57,7 +57,18 @@ public class JumpScript : MonoBehaviour
             }
             isGrounded = true;
             jumpCount = componentScript.JumpCompoent;
+
+
         }
+        if (rayHit.collider != null && rayHit.collider.GetComponent<Rigidbody2D>() != null)
+        {
+            inputScript.GroundSpeed = rayHit.collider.GetComponent<Rigidbody2D>().velocity;
+        }
+        else
+        {
+            inputScript.GroundSpeed = new Vector2(0, 0);
+        }
+ 
         if (rayHit.collider == null)//АјСп
         {
             isGrounded = false;
