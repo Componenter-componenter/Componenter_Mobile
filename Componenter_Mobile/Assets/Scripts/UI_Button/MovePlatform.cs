@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class MovePlatform : MonoBehaviour
 {
     public float time;
-    public Vector2 speed;
-    [SerializeField] float pretime;
+    public Vector2 speed;//처음시간
+    public float pretime;//시작시간
     public Rigidbody2D rigidbody;
 
     private void Awake()

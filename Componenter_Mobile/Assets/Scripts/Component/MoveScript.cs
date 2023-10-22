@@ -29,7 +29,11 @@ public class MoveScript : MonoBehaviour
     {
         if (componentScript)
         {
-            rigid.velocity = inputScript.GroundSpeed + new Vector2(moveSpeed * inputScript.move * componentScript.MoveComponent, rigid.velocity.y);//속도
+            rigid.velocity =  new Vector2(inputScript.GroundSpeed .x+moveSpeed * inputScript.move * componentScript.MoveComponent, rigid.velocity.y);//속도
+            if (inputScript.GroundSpeed.y != 0 && !inputScript.jump)
+            {
+                rigid.velocity = new Vector2(inputScript.GroundSpeed.x + moveSpeed * inputScript.move * componentScript.MoveComponent, inputScript.GroundSpeed.y);//속도
+            }
 
             if (inputScript.move * componentScript.MoveComponent != 0)
             {
