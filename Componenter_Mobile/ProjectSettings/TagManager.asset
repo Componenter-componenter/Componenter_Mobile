@@ -11,6 +11,7 @@ TagManager:
   - MonsterAttack
   - Stage
   - DeadLine
+  - Platform
   layers:
   - Default
   - TransparentFX

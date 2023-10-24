@@ -33,7 +33,7 @@ public class JumpScript : MonoBehaviour
         animator.SetBool("isGrounded", isGrounded);
 
         Debug.DrawRay(jumpPivot.position, Vector2.down* jumpScope, new Color(0, 1, 0));    //¾Æ·¡·Îºö½ô
-        Collider2D rayHit = Physics2D.OverlapCircle(jumpPivot.position, 0.5f, 1 << LayerMask.NameToLayer("Ground"));
+        Collider2D rayHit = Physics2D.OverlapCircle(jumpPivot.position, 0.1f, 1 << LayerMask.NameToLayer("Ground"));
         //RaycastHit2D rayHit = Physics2D.CapsuleCast(jumpPivot.position, jumpPivot.position+Vector3.down, 5f, Vector2.down, jumpScope, LayerMask.GetMask("Ground")) ;
 
         if (inputScript.jump)//Á¡ÇÁ
