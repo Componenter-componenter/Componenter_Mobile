@@ -26,14 +26,15 @@ public class JumpScript : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (!isGrounded && jumpCount < componentScript.JumpCompoent && rigid.velocity.y > 0) animator.SetBool("isJumping", true);//땅에 없고 점프카운트가 깎여있으면 점프중인상태로 설정
         else animator.SetBool("isJumping", false);
         animator.SetBool("isGrounded", isGrounded);
 
         Debug.DrawRay(jumpPivot.position, Vector2.down* jumpScope, new Color(0, 1, 0));    //아래로빔쏨
-        RaycastHit2D rayHit = Physics2D.Raycast(jumpPivot.position, Vector2.down, jumpScope, LayerMask.GetMask("Ground"));//땅에 붙어있는지 감지
+        Collider2D rayHit = Physics2D.OverlapCircle(jumpPivot.position, 0.5f, 1 << LayerMask.NameToLayer("Ground"));
+        //RaycastHit2D rayHit = Physics2D.CapsuleCast(jumpPivot.position, jumpPivot.position+Vector3.down, 5f, Vector2.down, jumpScope, LayerMask.GetMask("Ground")) ;
 
         if (inputScript.jump)//점프
         {
@@ -49,7 +50,7 @@ public class JumpScript : MonoBehaviour
             inputScript.jump = false;
         }
 
-        if (rayHit.collider != null)//착지
+        if (rayHit != null)//착지
         {
             if (!isGrounded)
             {
@@ -60,16 +61,16 @@ public class JumpScript : MonoBehaviour
 
 
         }
-        if (rayHit.collider != null && rayHit.collider.GetComponent<Rigidbody2D>() != null)
+        if (rayHit != null && rayHit.GetComponent<Rigidbody2D>() != null)
         {
-            inputScript.GroundSpeed = rayHit.collider.GetComponent<Rigidbody2D>().velocity;
+            inputScript.GroundSpeed = rayHit.GetComponent<Rigidbody2D>().velocity;
         }
         else
         {
             inputScript.GroundSpeed = new Vector2(0, 0);
         }
  
-        if (rayHit.collider == null)//공중
+        if (rayHit == null)//공중
         {
             isGrounded = false;
             jumpCount = Mathf.Min(jumpCount, componentScript.JumpCompoent - 1);

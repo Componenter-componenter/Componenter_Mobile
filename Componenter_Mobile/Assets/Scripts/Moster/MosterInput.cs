@@ -12,10 +12,16 @@ public class MosterInput : InputScript
     public float Angry;
     public Transform playerTrans;
     public ComponentManager componentScript;
+    Rigidbody2D rigid;
+
+    RaycastHit2D GroundrayHit;
+    RaycastHit2D GroundrayHit2;
 
     public void Awake()
     {
-        move = 1;
+        rigid = GetComponent<Rigidbody2D>();
+        if (move ==0)
+            move = 1;
     }
 
     // Update is called once per frame
@@ -24,9 +30,13 @@ public class MosterInput : InputScript
         hitcul -= Time.deltaTime;
         if (canMove)
         {
-            Debug.DrawRay(Sight.position, Vector3.down, new Color(0, 1, 0)); //앞쪽 아래로 빔
-            RaycastHit2D GroundrayHit = Physics2D.Raycast(Sight.position, Vector3.down, 1, LayerMask.GetMask("Ground"));
-            if (!GroundrayHit)
+            Debug.DrawRay(Sight.position, Vector3.down*3, new Color(0, 1, 0)); //앞쪽 아래로 빔
+            GroundrayHit = Physics2D.Raycast(Sight.position, Vector3.down*3, 3, LayerMask.GetMask("Ground"));
+
+
+            Debug.DrawRay(transform.position + new Vector3(0, 1f, 0), new Vector3(move , 0, 0), new Color(1, 1, 1)); //지면탐지2
+            GroundrayHit2 = Physics2D.Raycast(transform.position + new Vector3(0, 1f, 0), new Vector3(move, 0, 0), 0.5f, LayerMask.GetMask("Ground"));
+            if (rigid.velocity.y ==0 && !GroundrayHit || GroundrayHit2)
             {
                 move *= -1;
             }
