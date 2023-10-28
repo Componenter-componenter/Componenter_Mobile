@@ -1074,7 +1074,7 @@ MonoBehaviour:
   cutsceneTexts:
   - "\uC544\uC624 \uADF8\uB0E5 \uC0AD\uC81C\uD574\uC57C\uACA0\uB2E4!"
   - "\uC9C0\uC6CC\uBC84\uB824 \uADF8\uB0E5"
-  imageDisplayTime: 1
+  imageDisplayTime: 2
   cut2: {fileID: 1342271760}
   cut3: {fileID: 247080385}
 --- !u!114 &1342271763
@@ -1218,9 +1218,10 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 9205ae7ac2a632140a8881804e00e3b8, type: 3}
   cutsceneTexts:
   - "\uD0C0\uB2E5\u2026\uD0C0\uB2E5\u2026\uD0C0\uB2E5\u2026\uD0C0\uB2E5\u2026"
-  - "\uD760 \uC774\uBD80\uBD84\uC744 \uC218\uC815\uD574\uBCFC\uAE4C?"
-  - "\uD074\uB9AD"
-  imageDisplayTime: 1
+  - "\uD760 \uC774\uBD80\uBD84\uC744 \uC218\uC815\uD574\uBCFC\uAE4C? \uC5D0\uC774
+    \uC218\uC815\uD574\uB3C4 \uC548\uB418\uC796\uC544 \uADF8\uB0E5 \uC0AD\uC81C\uD574\uBC84\uB824\uC57C\uACA0\uB2E4."
+  - "\uC5B4 \uC65C \uC218\uC815\uC778 \uC548\uB418\uB294\uAC70\uC9C0?"
+  imageDisplayTime: 2
   cut2: {fileID: 1342271760}
   cut3: {fileID: 247080385}
 --- !u!1 &1510338979
@@ -1771,7 +1772,7 @@ MonoBehaviour:
   m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7aedf2fb012e6734686addb27817fe09, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+  m_sharedMaterial: {fileID: 3362668392787893870, guid: 7aedf2fb012e6734686addb27817fe09, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
