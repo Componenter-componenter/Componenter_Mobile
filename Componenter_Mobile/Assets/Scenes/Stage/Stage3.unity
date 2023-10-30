@@ -1944,6 +1944,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4353401474923999364, guid: f5245031f6b521c49af464658aea103b, type: 3}
+      propertyPath: nextSceneLoad
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 4571124747573435084, guid: f5245031f6b521c49af464658aea103b, type: 3}
       propertyPath: m_Name
       value: portal
@@ -3433,7 +3437,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5052758384036725318, guid: a73ded34995f27046be89561fd294438, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 69.30035
+      value: 69.30004
       objectReference: {fileID: 0}
     - target: {fileID: 5687129174255737386, guid: a73ded34995f27046be89561fd294438, type: 3}
       propertyPath: m_AnchorMax.x

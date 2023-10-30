@@ -31,7 +31,7 @@ public class StageSelector : MonoBehaviour
     {
         
         stageButton = GetComponent<Button>();
-        stageButton.interactable = false;
+        //stageButton.interactable = false;
         stageText = GetComponentInChildren<TextMeshProUGUI>();
         word = "T";
 
@@ -41,11 +41,11 @@ public class StageSelector : MonoBehaviour
         {
             
             stageText.text = word.ToString();
-            stageButton.interactable = true;
+            //stageButton.interactable = true;
         }
         else if(stage == 1)
         {
-            stageButton.interactable = true;
+           // stageButton.interactable = true;
         }
         if (stageText)
         {

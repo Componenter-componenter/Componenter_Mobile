@@ -286,6 +286,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4353401474923999364, guid: f5245031f6b521c49af464658aea103b, type: 3}
+      propertyPath: nextSceneLoad
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4571124747573435084, guid: f5245031f6b521c49af464658aea103b, type: 3}
       propertyPath: m_Name
       value: portal
@@ -4828,11 +4832,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4771165210426623431, guid: a73ded34995f27046be89561fd294438, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.2481728
+      value: -6.2457848
       objectReference: {fileID: 0}
     - target: {fileID: 4771165210426623431, guid: a73ded34995f27046be89561fd294438, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.9876719
+      value: 2.9876676
       objectReference: {fileID: 0}
     - target: {fileID: 5052758384036725318, guid: a73ded34995f27046be89561fd294438, type: 3}
       propertyPath: m_AnchoredPosition.y
